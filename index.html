@@ -635,7 +635,7 @@ function typing(){var ae=document.activeElement;return !!ae&&ae.tagName==="INPUT
 function safeRender(){if(typing()){pendingRender=true;return;}render();}
 
 /* ---------- Connexion à Supabase ---------- */
-var CFG={url:"__SUPABASE_URL__",key:"__SUPABASE_KEY__"};
+var CFG={url:"https://utsdppdxtdktblscxqwc.supabase.co",key:"sb_publishable_t36Ehg6wqbY-M-h3Yo8f7A_p75_uMbb"};
 var sb=null,wTimer=null,writing=false,wDirty=false,retryTimer=null;
 var isRecovery=/type=recovery/.test(String(location.hash)+String(location.search));
 function configured(){return CFG.url.indexOf("__")<0&&CFG.key.indexOf("__")<0;}
