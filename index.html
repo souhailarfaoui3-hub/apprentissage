@@ -149,6 +149,15 @@ input[type=email]:focus-visible,input[type=password]:focus-visible{outline:3px s
 .choice span{font-size:.85rem;color:var(--muted)}
 .choice.on{border:2px solid var(--accent);background:color-mix(in srgb,var(--accent) 8%,var(--surface))}
 .btn[disabled]{opacity:.6;cursor:wait}
+.big-ar{font-family:var(--f-ar,inherit);font-size:2.6rem;line-height:1.5;text-align:center;margin:.2em 0 0}
+.nm-tr{text-align:center;font-weight:600;font-size:1.15rem;margin:0}
+.name-card{text-align:left}
+.dua-ar{font-size:1.45rem;line-height:2;text-align:right;margin:.3em 0}
+.dua-tr{font-style:italic;color:var(--muted)}
+.nm-row{display:grid;grid-template-columns:2.2em 1fr auto;gap:8px 10px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.nm-row .n{font-variant-numeric:tabular-nums;color:var(--muted);text-align:center}
+.nm-row.done{border-left:4px solid var(--ok,var(--accent))}
+.nm-mid{min-width:0;display:flex;flex-direction:column;gap:3px}
 </style>
 </head>
 <body>
@@ -257,11 +266,152 @@ var H=[
 {n:42,r:"Anas ibn Mālik",t:"Hadith qudsī : « Ô fils d'Adam, tant que tu M'invoques et espères en Moi, Je te pardonne ce que tu as fait. Si tes péchés atteignaient les nuages du ciel puis que tu Me demandais pardon, Je te pardonnerais. Si tu venais à Moi avec des fautes à remplir la terre, puis Me rencontrais sans rien M'associer, Je viendrais à toi avec autant de pardon. »",s:"at-Tirmidhī, qui le juge ḥasan",g:"h",a:"Ne jamais désespérer : istighfār quotidien et tawḥīd préservé."}
 ];
 var GR={s:["Ṣaḥīḥ","ok"],h:["Ḥasan / ṣaḥīḥ selon le collecteur","acc"],d:["Authenticité discutée","warn"],f:["Jugé faible","warn"]};
+/* ---------- Les plus beaux noms d'Allah (liste rapportée par at-Tirmidhī) ---------- */
+/* [n, arabe, translittération, sens] */
+var NM=[
+[1,"الرَّحْمَٰنُ","ar-Raḥmān","Le Tout-Miséricordieux : Sa miséricorde, immense, embrasse toute chose."],
+[2,"الرَّحِيمُ","ar-Raḥīm","Le Très-Miséricordieux : Il fait miséricorde en particulier aux croyants."],
+[3,"الْمَلِكُ","al-Malik","Le Roi : le Souverain absolu de toute chose."],
+[4,"الْقُدُّوسُ","al-Quddūs","Le Saint : pur de tout défaut et de toute imperfection."],
+[5,"السَّلَامُ","as-Salām","La Paix : exempt de tout défaut, source de toute paix."],
+[6,"الْمُؤْمِنُ","al-Mu'min","Celui qui accorde la sécurité et confirme la véracité de Ses messagers."],
+[7,"الْمُهَيْمِنُ","al-Muhaymin","Le Préservateur : Il veille sur Ses créatures et en est témoin."],
+[8,"الْعَزِيزُ","al-'Azīz","Le Tout-Puissant : l'Invincible, que rien ne peut vaincre."],
+[9,"الْجَبَّارُ","al-Jabbār","Le Contraignant : Sa volonté s'impose, et Il répare ce qui est brisé."],
+[10,"الْمُتَكَبِّرُ","al-Mutakabbir","Le Suprêmement Grand : la grandeur n'appartient vraiment qu'à Lui."],
+[11,"الْخَالِقُ","al-Khāliq","Le Créateur : Il détermine et crée toute chose."],
+[12,"الْبَارِئُ","al-Bāri'","Le Producteur : Il fait exister les créatures, sans défaut."],
+[13,"الْمُصَوِّرُ","al-Muṣawwir","Le Formateur : Il donne à chaque créature sa forme."],
+[14,"الْغَفَّارُ","al-Ghaffār","Celui qui pardonne encore et encore."],
+[15,"الْقَهَّارُ","al-Qahhār","Le Dominateur : toute chose Lui est soumise."],
+[16,"الْوَهَّابُ","al-Wahhāb","Le Donateur : Il donne sans compter et sans contrepartie."],
+[17,"الرَّزَّاقُ","ar-Razzāq","Le Pourvoyeur : Il assure la subsistance de toutes Ses créatures."],
+[18,"الْفَتَّاحُ","al-Fattāḥ","Celui qui ouvre : Il ouvre les portes du bien et juge avec vérité."],
+[19,"الْعَلِيمُ","al-'Alīm","L'Omniscient : Sa science embrasse tout."],
+[20,"الْقَابِضُ","al-Qābiḍ","Celui qui restreint (la subsistance, les âmes), par sagesse."],
+[21,"الْبَاسِطُ","al-Bāsiṭ","Celui qui étend et accorde largement."],
+[22,"الْخَافِضُ","al-Khāfiḍ","Celui qui abaisse qui Il veut."],
+[23,"الرَّافِعُ","ar-Rāfi'","Celui qui élève qui Il veut."],
+[24,"الْمُعِزُّ","al-Mu'izz","Celui qui donne l'honneur et la puissance."],
+[25,"الْمُذِلُّ","al-Mudhill","Celui qui humilie qui Il veut, avec justice."],
+[26,"السَّمِيعُ","as-Samī'","L'Audient : Il entend tout, même le murmure."],
+[27,"الْبَصِيرُ","al-Baṣīr","Le Clairvoyant : Il voit tout."],
+[28,"الْحَكَمُ","al-Ḥakam","Le Juge : Son jugement est définitif."],
+[29,"الْعَدْلُ","al-'Adl","Le Juste : Il ne commet aucune injustice."],
+[30,"اللَّطِيفُ","al-Laṭīf","Le Subtil et Bienveillant : Il connaît les choses les plus fines et fait le bien par des voies discrètes."],
+[31,"الْخَبِيرُ","al-Khabīr","Le Parfaitement Informé : rien de caché ne Lui échappe."],
+[32,"الْحَلِيمُ","al-Ḥalīm","Le Longanime : Il ne se hâte pas de punir."],
+[33,"الْعَظِيمُ","al-'Aẓīm","L'Immense, le Magnifique."],
+[34,"الْغَفُورُ","al-Ghafūr","Le Pardonneur : Il couvre les péchés et les efface."],
+[35,"الشَّكُورُ","ash-Shakūr","Le Reconnaissant : Il récompense largement même une petite œuvre."],
+[36,"الْعَلِيُّ","al-'Aliyy","Le Très-Haut."],
+[37,"الْكَبِيرُ","al-Kabīr","Le Grand, au-dessus de tout."],
+[38,"الْحَفِيظُ","al-Ḥafīẓ","Le Gardien : Il préserve et conserve toute chose."],
+[39,"الْمُقِيتُ","al-Muqīt","Celui qui nourrit Ses créatures et veille sur elles."],
+[40,"الْحَسِيبُ","al-Ḥasīb","Celui qui suffit, et qui tient le compte de tout."],
+[41,"الْجَلِيلُ","al-Jalīl","Le Majestueux."],
+[42,"الْكَرِيمُ","al-Karīm","Le Généreux."],
+[43,"الرَّقِيبُ","ar-Raqīb","L'Observateur : Il voit tout, en permanence."],
+[44,"الْمُجِيبُ","al-Mujīb","Celui qui répond aux invocations."],
+[45,"الْوَاسِعُ","al-Wāsi'","L'Immense : Sa générosité et Sa science n'ont pas de limite."],
+[46,"الْحَكِيمُ","al-Ḥakīm","Le Sage : tout ce qu'Il fait et décrète est sagesse."],
+[47,"الْوَدُودُ","al-Wadūd","Le Bien-Aimant : Il aime Ses serviteurs pieux et Il est aimé d'eux."],
+[48,"الْمَجِيدُ","al-Majīd","Le Glorieux."],
+[49,"الْبَاعِثُ","al-Bā'ith","Celui qui ressuscite les morts."],
+[50,"الشَّهِيدُ","ash-Shahīd","Le Témoin : rien n'échappe à Sa présence."],
+[51,"الْحَقُّ","al-Ḥaqq","La Vérité : Son existence, Sa parole et Ses promesses sont vraies."],
+[52,"الْوَكِيلُ","al-Wakīl","Le Garant : on s'en remet à Lui, et Il suffit."],
+[53,"الْقَوِيُّ","al-Qawiyy","Le Fort."],
+[54,"الْمَتِينُ","al-Matīn","L'Inébranlable, d'une force sans faille."],
+[55,"الْوَلِيُّ","al-Waliyy","Le Protecteur, l'Allié des croyants."],
+[56,"الْحَمِيدُ","al-Ḥamīd","Le Digne de louange."],
+[57,"الْمُحْصِي","al-Muḥṣī","Celui qui dénombre toute chose."],
+[58,"الْمُبْدِئُ","al-Mubdi'","Celui qui commence la création."],
+[59,"الْمُعِيدُ","al-Mu'īd","Celui qui la recommence, à la résurrection."],
+[60,"الْمُحْيِي","al-Muḥyī","Celui qui donne la vie."],
+[61,"الْمُمِيتُ","al-Mumīt","Celui qui donne la mort."],
+[62,"الْحَيُّ","al-Ḥayy","Le Vivant, d'une vie parfaite."],
+[63,"الْقَيُّومُ","al-Qayyūm","Celui qui subsiste par Lui-même et fait subsister toute chose."],
+[64,"الْوَاجِدُ","al-Wājid","Celui à qui rien ne manque."],
+[65,"الْمَاجِدُ","al-Mājid","Le Noble, le Glorieux."],
+[66,"الْوَاحِدُ","al-Wāḥid","L'Unique."],
+[67,"الْأَحَدُ","al-Aḥad","L'Un, sans égal ni semblable."],
+[68,"الصَّمَدُ","aṣ-Ṣamad","Celui vers qui toute créature se tourne dans le besoin, et qui n'a besoin de rien."],
+[69,"الْقَادِرُ","al-Qādir","Le Capable de toute chose."],
+[70,"الْمُقْتَدِرُ","al-Muqtadir","Le Détenteur de la puissance absolue."],
+[71,"الْمُقَدِّمُ","al-Muqaddim","Celui qui fait avancer qui Il veut."],
+[72,"الْمُؤَخِّرُ","al-Mu'akhkhir","Celui qui fait reculer qui Il veut."],
+[73,"الْأَوَّلُ","al-Awwal","Le Premier : rien n'existe avant Lui."],
+[74,"الْآخِرُ","al-Ākhir","Le Dernier : rien n'existe après Lui."],
+[75,"الظَّاهِرُ","aẓ-Ẓāhir","L'Apparent : rien n'est au-dessus de Lui."],
+[76,"الْبَاطِنُ","al-Bāṭin","Le Caché : rien n'est en deçà de Lui."],
+[77,"الْوَالِي","al-Wālī","Celui qui gouverne et gère toute chose."],
+[78,"الْمُتَعَالِي","al-Muta'ālī","Le Sublime, au-dessus de tout."],
+[79,"الْبَرُّ","al-Barr","Le Bienfaisant."],
+[80,"التَّوَّابُ","at-Tawwāb","Celui qui accepte sans cesse le repentir."],
+[81,"الْمُنْتَقِمُ","al-Muntaqim","Celui qui châtie les criminels, avec justice."],
+[82,"الْعَفُوُّ","al-'Afuww","Celui qui efface les fautes."],
+[83,"الرَّءُوفُ","ar-Ra'ūf","Le Très-Doux, plein de tendresse."],
+[84,"مَالِكُ الْمُلْكِ","Mālik al-Mulk","Le Possesseur de la royauté."],
+[85,"ذُو الْجَلَالِ وَالْإِكْرَامِ","Dhū l-Jalāli wa l-Ikrām","Le Détenteur de la majesté et de la générosité."],
+[86,"الْمُقْسِطُ","al-Muqsiṭ","L'Équitable."],
+[87,"الْجَامِعُ","al-Jāmi'","Celui qui rassemble les créatures au Jour du Jugement."],
+[88,"الْغَنِيُّ","al-Ghaniyy","Le Riche : Il n'a besoin de rien ni de personne."],
+[89,"الْمُغْنِي","al-Mughnī","Celui qui enrichit qui Il veut."],
+[90,"الْمَانِعُ","al-Māni'","Celui qui retient, par sagesse."],
+[91,"الضَّارُّ","aḍ-Ḍārr","Celui qui fait atteindre l'épreuve, par sagesse."],
+[92,"النَّافِعُ","an-Nāfi'","Celui qui accorde le bienfait."],
+[93,"النُّورُ","an-Nūr","La Lumière."],
+[94,"الْهَادِي","al-Hādī","Le Guide."],
+[95,"الْبَدِيعُ","al-Badī'","L'Inventeur : Il crée sans modèle préalable."],
+[96,"الْبَاقِي","al-Bāqī","Celui qui demeure, éternellement."],
+[97,"الْوَارِثُ","al-Wārith","L'Héritier : tout Lui revient."],
+[98,"الرَّشِيدُ","ar-Rashīd","Le Guide vers la droiture, dont tous les actes sont sages."],
+[99,"الصَّبُورُ","aṣ-Ṣabūr","Le Patient."]
+];
+/* noms qui se mentionnent avec leur opposé */
+var NPAIR={20:21,21:20,22:23,23:22,24:25,25:24,71:72,72:71,91:92,92:91};
+
+/* ---------- Duʿās du Coran et de la Sunna authentique ---------- */
+/* g : q = Coran, s = authentique (al-Bukhārī / Muslim ou jugé ṣaḥīḥ), h = ḥasan */
+var DU=[
+{n:1,o:"Le bien des deux mondes",ar:"رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ",tr:"Rabbanā ātinā fi d-dunyā ḥasanatan wa fi l-ākhirati ḥasanatan wa qinā 'adhāba n-nār",fr:"Notre Seigneur, accorde-nous une belle part ici-bas et une belle part dans l'au-delà, et protège-nous du châtiment du Feu.",src:"Coran, Al-Baqara 2:201",g:"q",note:"D'après Anas, c'est l'invocation que le Prophète ﷺ faisait le plus souvent (al-Bukhārī et Muslim)."},
+{n:2,o:"Pour augmenter en science",ar:"رَبِّ زِدْنِي عِلْمًا",tr:"Rabbi zidnī 'ilmā",fr:"Seigneur, accrois-moi en science.",src:"Coran, Ṭā-Hā 20:114",g:"q"},
+{n:3,o:"Avant une tâche difficile ou une prise de parole",ar:"رَبِّ اشْرَحْ لِي صَدْرِي|وَيَسِّرْ لِي أَمْرِي|وَاحْلُلْ عُقْدَةً مِّن لِّسَانِي|يَفْقَهُوا قَوْلِي",tr:"Rabbi shraḥ lī ṣadrī, wa yassir lī amrī, wa-ḥlul 'uqdatan min lisānī, yafqahū qawlī",fr:"Seigneur, ouvre-moi la poitrine, facilite-moi ma tâche, dénoue le nœud de ma langue, afin qu'ils comprennent mes paroles.",src:"Coran, Ṭā-Hā 20:25-28",g:"q",note:"L'invocation de Mūsā (Moïse) avant d'aller trouver Pharaon."},
+{n:4,o:"Pour la fermeté du cœur",ar:"رَبَّنَا لَا تُزِغْ قُلُوبَنَا بَعْدَ إِذْ هَدَيْتَنَا وَهَبْ لَنَا مِن لَّدُنكَ رَحْمَةً ۚ إِنَّكَ أَنتَ الْوَهَّابُ",tr:"Rabbanā lā tuzigh qulūbanā ba'da idh hadaytanā wa hab lanā min ladunka raḥmah, innaka anta l-Wahhāb",fr:"Notre Seigneur, ne laisse pas dévier nos cœurs après nous avoir guidés, et accorde-nous une miséricorde venant de Toi : c'est Toi le Donateur.",src:"Coran, Āl 'Imrān 3:8",g:"q"},
+{n:5,o:"Pour son foyer",ar:"رَبَّنَا هَبْ لَنَا مِنْ أَزْوَاجِنَا وَذُرِّيَّاتِنَا قُرَّةَ أَعْيُنٍ وَاجْعَلْنَا لِلْمُتَّقِينَ إِمَامًا",tr:"Rabbanā hab lanā min azwājinā wa dhurriyyātinā qurrata a'yun, wa-j'alnā lil-muttaqīna imāmā",fr:"Notre Seigneur, fais de nos conjoints et de nos descendants la fraîcheur de nos yeux, et fais de nous un modèle pour les pieux.",src:"Coran, Al-Furqān 25:74",g:"q"},
+{n:6,o:"Pour la prière, la sienne et celle de ses enfants",ar:"رَبِّ اجْعَلْنِي مُقِيمَ الصَّلَاةِ وَمِن ذُرِّيَّتِي ۚ رَبَّنَا وَتَقَبَّلْ دُعَاءِ",tr:"Rabbi-j'alnī muqīma ṣ-ṣalāti wa min dhurriyyatī, rabbanā wa taqabbal du'ā'",fr:"Seigneur, fais que j'accomplisse la prière avec assiduité, ainsi qu'une partie de ma descendance. Notre Seigneur, exauce mon invocation.",src:"Coran, Ibrāhīm 14:40",g:"q"},
+{n:7,o:"Le pardon pour soi, ses parents et les croyants",ar:"رَبَّنَا اغْفِرْ لِي وَلِوَالِدَيَّ وَلِلْمُؤْمِنِينَ يَوْمَ يَقُومُ الْحِسَابُ",tr:"Rabbanā-ghfir lī wa li-wālidayya wa lil-mu'minīna yawma yaqūmu l-ḥisāb",fr:"Notre Seigneur, pardonne-moi, ainsi qu'à mes parents et aux croyants, le jour où se dressera le compte.",src:"Coran, Ibrāhīm 14:41",g:"q"},
+{n:8,o:"Pour ses parents",ar:"رَّبِّ ارْحَمْهُمَا كَمَا رَبَّيَانِي صَغِيرًا",tr:"Rabbi-rḥamhumā kamā rabbayānī ṣaghīrā",fr:"Seigneur, fais-leur miséricorde comme ils m'ont élevé quand j'étais petit.",src:"Coran, Al-Isrā' 17:24",g:"q"},
+{n:9,o:"Le repentir d'Adam et Ḥawwā'",ar:"رَبَّنَا ظَلَمْنَا أَنفُسَنَا وَإِن لَّمْ تَغْفِرْ لَنَا وَتَرْحَمْنَا لَنَكُونَنَّ مِنَ الْخَاسِرِينَ",tr:"Rabbanā ẓalamnā anfusanā wa in lam taghfir lanā wa tarḥamnā la-nakūnanna mina l-khāsirīn",fr:"Notre Seigneur, nous nous sommes fait du tort à nous-mêmes. Si Tu ne nous pardonnes pas et ne nous fais pas miséricorde, nous serons certes parmi les perdants.",src:"Coran, Al-A'rāf 7:23",g:"q"},
+{n:10,o:"Dans la détresse : l'invocation de Yūnus",ar:"لَّا إِلَٰهَ إِلَّا أَنتَ سُبْحَانَكَ إِنِّي كُنتُ مِنَ الظَّالِمِينَ",tr:"Lā ilāha illā anta, subḥānaka, innī kuntu mina ẓ-ẓālimīn",fr:"Il n'y a de divinité que Toi. Gloire à Toi ! J'ai été parmi les injustes.",src:"Coran, Al-Anbiyā' 21:87",g:"q",note:"At-Tirmidhī rapporte de Sa'd ibn Abī Waqqāṣ qu'aucun musulman ne l'invoque pour une chose sans qu'Allah lui réponde."},
+{n:11,o:"S'en remettre à Allah face à une menace",ar:"حَسْبُنَا اللَّهُ وَنِعْمَ الْوَكِيلُ",tr:"Ḥasbuna-llāhu wa ni'ma l-wakīl",fr:"Allah nous suffit, et quel excellent Garant !",src:"Coran, Āl 'Imrān 3:173",g:"q",note:"D'après Ibn 'Abbās, Ibrāhīm l'a dite quand il fut jeté dans le feu, et Muḥammad ﷺ quand on lui annonça que l'ennemi se rassemblait (al-Bukhārī)."},
+{n:12,o:"Après une bonne œuvre",ar:"رَبَّنَا تَقَبَّلْ مِنَّا ۖ إِنَّكَ أَنتَ السَّمِيعُ الْعَلِيمُ",tr:"Rabbanā taqabbal minnā, innaka anta s-Samī'u l-'Alīm",fr:"Notre Seigneur, accepte cela de notre part : c'est Toi l'Audient, l'Omniscient.",src:"Coran, Al-Baqara 2:127",g:"q",note:"L'invocation d'Ibrāhīm et d'Ismā'īl en élevant les fondations de la Ka'ba."},
+{n:13,o:"Quand on a besoin d'un bien",ar:"رَبِّ إِنِّي لِمَا أَنزَلْتَ إِلَيَّ مِنْ خَيْرٍ فَقِيرٌ",tr:"Rabbi innī limā anzalta ilayya min khayrin faqīr",fr:"Seigneur, j'ai grand besoin du bien que Tu feras descendre vers moi.",src:"Coran, Al-Qaṣaṣ 28:24",g:"q",note:"L'invocation de Mūsā, seul et sans ressources, à Madyan."},
+{n:14,o:"Pour la patience",ar:"رَبَّنَا أَفْرِغْ عَلَيْنَا صَبْرًا وَثَبِّتْ أَقْدَامَنَا وَانصُرْنَا عَلَى الْقَوْمِ الْكَافِرِينَ",tr:"Rabbanā afrigh 'alaynā ṣabran wa thabbit aqdāmanā wa-nṣurnā 'ala l-qawmi l-kāfirīn",fr:"Notre Seigneur, déverse sur nous la patience, affermis nos pas et donne-nous la victoire sur le peuple mécréant.",src:"Coran, Al-Baqara 2:250",g:"q"},
+{n:15,o:"Pour les oublis et les erreurs",ar:"رَبَّنَا لَا تُؤَاخِذْنَا إِن نَّسِينَا أَوْ أَخْطَأْنَا",tr:"Rabbanā lā tu'ākhidhnā in nasīnā aw akhṭa'nā",fr:"Notre Seigneur, ne nous tiens pas rigueur de nos oublis et de nos erreurs.",src:"Coran, Al-Baqara 2:286",g:"q"},
+{n:16,o:"Le maître de la demande de pardon (sayyid al-istighfār)",ar:"اللَّهُمَّ أَنْتَ رَبِّي لَا إِلَهَ إِلَّا أَنْتَ، خَلَقْتَنِي وَأَنَا عَبْدُكَ، وَأَنَا عَلَى عَهْدِكَ وَوَعْدِكَ مَا اسْتَطَعْتُ، أَعُوذُ بِكَ مِنْ شَرِّ مَا صَنَعْتُ، أَبُوءُ لَكَ بِنِعْمَتِكَ عَلَيَّ، وَأَبُوءُ لَكَ بِذَنْبِي، فَاغْفِرْ لِي، فَإِنَّهُ لَا يَغْفِرُ الذُّنُوبَ إِلَّا أَنْتَ",tr:"Allāhumma anta rabbī, lā ilāha illā anta, khalaqtanī wa ana 'abduk, wa ana 'alā 'ahdika wa wa'dika ma-staṭa't, a'ūdhu bika min sharri mā ṣana't, abū'u laka bi-ni'matika 'alayya, wa abū'u laka bi-dhanbī, fa-ghfir lī, fa-innahu lā yaghfiru dh-dhunūba illā ant",fr:"Ô Allah, Tu es mon Seigneur, il n'y a de divinité que Toi. Tu m'as créé et je suis Ton serviteur. Je reste fidèle à mon engagement envers Toi et à Ta promesse autant que je le peux. Je cherche refuge auprès de Toi contre le mal de ce que j'ai fait. Je reconnais Tes bienfaits envers moi et je reconnais mon péché : pardonne-moi, car nul ne pardonne les péchés à part Toi.",src:"al-Bukhārī, d'après Shaddād ibn Aws",g:"s",note:"Celui qui la dit le matin avec conviction et meurt ce jour-là avant le soir fait partie des gens du Paradis, et de même le soir."},
+{n:17,o:"Demander l'effacement des fautes",ar:"اللَّهُمَّ إِنَّكَ عَفُوٌّ تُحِبُّ الْعَفْوَ فَاعْفُ عَنِّي",tr:"Allāhumma innaka 'afuwwun tuḥibbu l-'afwa fa-'fu 'annī",fr:"Ô Allah, Tu es Celui qui efface les fautes, et Tu aimes effacer : efface donc les miennes.",src:"at-Tirmidhī et Ibn Mājah, d'après 'Ā'isha",g:"s",note:"Enseignée par le Prophète ﷺ à 'Ā'isha pour la Nuit du Destin (Laylat al-Qadr). At-Tirmidhī l'a jugée ḥasan ṣaḥīḥ."},
+{n:18,o:"Pour garder la foi",ar:"يَا مُقَلِّبَ الْقُلُوبِ ثَبِّتْ قَلْبِي عَلَى دِينِكَ",tr:"Yā muqalliba l-qulūb, thabbit qalbī 'alā dīnik",fr:"Ô Toi qui retournes les cœurs, affermis mon cœur sur Ta religion.",src:"at-Tirmidhī, d'après Anas",g:"s",note:"Le Prophète ﷺ la répétait souvent."},
+{n:19,o:"Après chaque prière : aide pour l'adoration",ar:"اللَّهُمَّ أَعِنِّي عَلَى ذِكْرِكَ وَشُكْرِكَ وَحُسْنِ عِبَادَتِكَ",tr:"Allāhumma a'innī 'alā dhikrika wa shukrika wa ḥusni 'ibādatik",fr:"Ô Allah, aide-moi à T'évoquer, à Te remercier et à bien T'adorer.",src:"Abū Dāwūd et an-Nasā'ī, d'après Mu'ādh ibn Jabal",g:"s",note:"Le Prophète ﷺ a conseillé à Mu'ādh de ne pas la délaisser à la fin de chaque prière."},
+{n:20,o:"Guidée, piété, pudeur et suffisance",ar:"اللَّهُمَّ إِنِّي أَسْأَلُكَ الْهُدَى وَالتُّقَى وَالْعَفَافَ وَالْغِنَى",tr:"Allāhumma innī as'aluka l-hudā wa t-tuqā wa l-'afāfa wa l-ghinā",fr:"Ô Allah, je Te demande la guidée, la piété, la pudeur et la suffisance.",src:"Muslim, d'après Ibn Mas'ūd",g:"s"},
+{n:21,o:"Contre l'anxiété, la paresse et les dettes",ar:"اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْهَمِّ وَالْحَزَنِ، وَالْعَجْزِ وَالْكَسَلِ، وَالْبُخْلِ وَالْجُبْنِ، وَضَلَعِ الدَّيْنِ وَغَلَبَةِ الرِّجَالِ",tr:"Allāhumma innī a'ūdhu bika mina l-hammi wa l-ḥazan, wa l-'ajzi wa l-kasal, wa l-bukhli wa l-jubn, wa ḍala'i d-dayni wa ghalabati r-rijāl",fr:"Ô Allah, je cherche refuge auprès de Toi contre le souci et la tristesse, l'incapacité et la paresse, l'avarice et la lâcheté, le poids de la dette et la domination des hommes.",src:"al-Bukhārī, d'après Anas",g:"s"},
+{n:22,o:"Après la prière de Fajr",ar:"اللَّهُمَّ إِنِّي أَسْأَلُكَ عِلْمًا نَافِعًا، وَرِزْقًا طَيِّبًا، وَعَمَلًا مُتَقَبَّلًا",tr:"Allāhumma innī as'aluka 'ilman nāfi'an, wa rizqan ṭayyiban, wa 'amalan mutaqabbalā",fr:"Ô Allah, je Te demande une science utile, une subsistance pure et des œuvres acceptées.",src:"Ibn Mājah, d'après Umm Salama",g:"s",note:"Jugé authentique par al-Albānī."},
+{n:23,o:"Protection, trois fois le matin et le soir",ar:"بِسْمِ اللَّهِ الَّذِي لَا يَضُرُّ مَعَ اسْمِهِ شَيْءٌ فِي الْأَرْضِ وَلَا فِي السَّمَاءِ وَهُوَ السَّمِيعُ الْعَلِيمُ",tr:"Bismi-llāhi lladhī lā yaḍurru ma'a-smihi shay'un fi l-arḍi wa lā fi s-samā'i wa huwa s-Samī'u l-'Alīm",fr:"Au nom d'Allah, avec le nom de qui rien ne peut nuire, ni sur terre ni dans le ciel. Il est l'Audient, l'Omniscient.",src:"Abū Dāwūd et at-Tirmidhī, d'après 'Uthmān ibn 'Affān",g:"s",note:"Celui qui la dit trois fois le matin et trois fois le soir, rien ne lui nuira."},
+{n:24,o:"En sortant de chez soi",ar:"بِسْمِ اللَّهِ، تَوَكَّلْتُ عَلَى اللَّهِ، وَلَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ",tr:"Bismi-llāh, tawakkaltu 'ala-llāh, wa lā ḥawla wa lā quwwata illā bi-llāh",fr:"Au nom d'Allah, je m'en remets à Allah, il n'y a de force ni de puissance que par Allah.",src:"Abū Dāwūd et at-Tirmidhī, d'après Anas",g:"s"},
+{n:25,o:"Après le salut de la prière",ar:"اللَّهُمَّ أَنْتَ السَّلَامُ، وَمِنْكَ السَّلَامُ، تَبَارَكْتَ يَا ذَا الْجَلَالِ وَالْإِكْرَامِ",tr:"Allāhumma anta s-Salām, wa minka s-salām, tabārakta yā dha l-jalāli wa l-ikrām",fr:"Ô Allah, Tu es la Paix et de Toi vient la paix. Béni sois-Tu, ô Détenteur de la majesté et de la générosité.",src:"Muslim, d'après Thawbān",g:"s",note:"Le Prophète ﷺ la disait après avoir demandé pardon trois fois (astaghfiru-llāh)."},
+{n:26,o:"Avant de dormir",ar:"بِاسْمِكَ اللَّهُمَّ أَمُوتُ وَأَحْيَا",tr:"Bismika-llāhumma amūtu wa aḥyā",fr:"C'est en Ton nom, ô Allah, que je meurs et que je vis.",src:"al-Bukhārī, d'après Ḥudhayfa",g:"s"},
+{n:27,o:"Au réveil",ar:"الْحَمْدُ لِلَّهِ الَّذِي أَحْيَانَا بَعْدَ مَا أَمَاتَنَا وَإِلَيْهِ النُّشُورُ",tr:"Al-ḥamdu li-llāhi lladhī aḥyānā ba'da mā amātanā wa ilayhi n-nushūr",fr:"Louange à Allah qui nous a rendu la vie après nous avoir fait mourir, et c'est vers Lui la résurrection.",src:"al-Bukhārī, d'après Ḥudhayfa",g:"s"},
+{n:28,o:"En entrant à la mosquée, puis en sortant",ar:"اللَّهُمَّ افْتَحْ لِي أَبْوَابَ رَحْمَتِكَ|اللَّهُمَّ إِنِّي أَسْأَلُكَ مِنْ فَضْلِكَ",tr:"En entrant : Allāhumma-ftaḥ lī abwāba raḥmatik. En sortant : Allāhumma innī as'aluka min faḍlik",fr:"En entrant : « Ô Allah, ouvre-moi les portes de Ta miséricorde. » En sortant : « Ô Allah, je Te demande de Ta grâce. »",src:"Muslim, d'après Abū Ḥumayd ou Abū Usayd",g:"s"},
+{n:29,o:"Après le repas",ar:"الْحَمْدُ لِلَّهِ الَّذِي أَطْعَمَنِي هَذَا وَرَزَقَنِيهِ مِنْ غَيْرِ حَوْلٍ مِنِّي وَلَا قُوَّةٍ",tr:"Al-ḥamdu li-llāhi lladhī aṭ'amanī hādhā wa razaqanīhi min ghayri ḥawlin minnī wa lā quwwah",fr:"Louange à Allah qui m'a nourri de ceci et me l'a accordé sans force ni puissance de ma part.",src:"Abū Dāwūd et at-Tirmidhī, d'après Mu'ādh ibn Anas",g:"h",note:"At-Tirmidhī l'a jugé ḥasan."},
+{n:30,o:"Dans l'angoisse",ar:"لَا إِلَهَ إِلَّا اللَّهُ الْعَظِيمُ الْحَلِيمُ، لَا إِلَهَ إِلَّا اللَّهُ رَبُّ الْعَرْشِ الْعَظِيمِ، لَا إِلَهَ إِلَّا اللَّهُ رَبُّ السَّمَاوَاتِ وَرَبُّ الْأَرْضِ وَرَبُّ الْعَرْشِ الْكَرِيمِ",tr:"Lā ilāha illa-llāhu l-'Aẓīmu l-Ḥalīm, lā ilāha illa-llāhu rabbu l-'arshi l-'aẓīm, lā ilāha illa-llāhu rabbu s-samāwāti wa rabbu l-arḍi wa rabbu l-'arshi l-karīm",fr:"Il n'y a de divinité qu'Allah, l'Immense, le Longanime. Il n'y a de divinité qu'Allah, Seigneur du Trône immense. Il n'y a de divinité qu'Allah, Seigneur des cieux, Seigneur de la terre et Seigneur du Trône noble.",src:"al-Bukhārī et Muslim, d'après Ibn 'Abbās",g:"s"}
+];
+var DG={q:["Coran","ok"],s:["Authentique","ok"],h:["Ḥasan","acc"]};
 var TOTAL_V=0; S.forEach(function(s){TOTAL_V+=s[4];});
 var SI={}; S.forEach(function(s,i){SI[s[0]]=i;});
 
 /* ---------- État personnel ---------- */
-var DEF={v:2,ts:0,start:"2026-11-17",cap:20,known:{},prog:{},rev:{},had:{},adv:null};
+var DEF={v:2,ts:0,start:"2026-11-17",cap:20,known:{},prog:{},rev:{},had:{},names:{},duas:{},adv:null};
 var LSC="souhail-apprentissage-cache";
 var DATE_RE=/^\d{4}-\d{2}-\d{2}$/;
 function lsGet(k){try{var t=localStorage.getItem(k);return t?JSON.parse(t):null;}catch(e){return null;}}
@@ -270,16 +420,18 @@ function isObj(o){return !!o&&typeof o==="object"&&!Array.isArray(o);}
 /* Normalise un état (le sien ou celui d'un autre participant : données partagées = non fiables). */
 function norm(src){
   src=isObj(src)?src:{};
-  var o={v:2,ts:+src.ts||0,start:DATE_RE.test(src.start)?src.start:DEF.start,cap:[10,15,20,25].indexOf(+src.cap)>=0?+src.cap:20,known:{},prog:{},rev:{},had:{},adv:DATE_RE.test(src.adv)?src.adv:null};
+  var o={v:2,ts:+src.ts||0,start:DATE_RE.test(src.start)?src.start:DEF.start,cap:[10,15,20,25].indexOf(+src.cap)>=0?+src.cap:20,known:{},prog:{},rev:{},had:{},names:{},duas:{},adv:DATE_RE.test(src.adv)?src.adv:null};
   if(isObj(src.known))Object.keys(src.known).forEach(function(n){if(src.known[n]&&SI[n]!==undefined)o.known[n]=1;});
   if(isObj(src.prog))Object.keys(src.prog).forEach(function(n){var a=src.prog[n];if(SI[n]===undefined||!Array.isArray(a))return;
     var b=a.filter(function(c){return Array.isArray(c)&&typeof c[0]==="number"&&DATE_RE.test(c[1]);}).map(function(c){return [c[0],c[1]];});if(b.length)o.prog[n]=b;});
   if(isObj(src.rev))Object.keys(src.rev).forEach(function(d){var a=src.rev[d];if(!DATE_RE.test(d)||!Array.isArray(a))return;
     var b=a.filter(function(n){return typeof n==="number"&&SI[n]!==undefined;});if(b.length)o.rev[d]=b;});
   if(isObj(src.had))Object.keys(src.had).forEach(function(n){var d=src.had[n];if(DATE_RE.test(d)&&+n>=1&&+n<=42)o.had[n]=d;});
+  if(isObj(src.names))Object.keys(src.names).forEach(function(n){var d=src.names[n];if(DATE_RE.test(d)&&+n>=1&&+n<=NM.length)o.names[n]=d;});
+  if(isObj(src.duas))Object.keys(src.duas).forEach(function(n){var d=src.duas[n];if(DATE_RE.test(d)&&+n>=1&&+n<=DU.length)o.duas[n]=d;});
   return o;
 }
-function hasProgress(st){return Object.keys(st.known).length+Object.keys(st.prog).length+Object.keys(st.rev).length+Object.keys(st.had).length>0;}
+function hasProgress(st){return Object.keys(st.known).length+Object.keys(st.prog).length+Object.keys(st.rev).length+Object.keys(st.had).length+Object.keys(st.names||{}).length+Object.keys(st.duas||{}).length>0;}
 function todayIso(){var d=new Date();return d.getFullYear()+"-"+(d.getMonth()<9?"0":"")+(d.getMonth()+1)+"-"+(d.getDate()<10?"0":"")+d.getDate();}
 var state=norm({});
 var localOk=true,resetArm=false,openH={};
@@ -349,22 +501,30 @@ function compute(st){
   var act={};Object.keys(st.prog).forEach(function(n){cp(n).forEach(function(c){act[c[1]]=1;});});
   Object.keys(st.rev).forEach(function(dt){if((st.rev[dt]||[]).length)act[dt]=1;});
   Object.keys(st.had).forEach(function(n){act[st.had[n]]=1;});
+  Object.keys(st.names||{}).forEach(function(n){act[st.names[n]]=1;});
+  Object.keys(st.duas||{}).forEach(function(n){act[st.duas[n]]=1;});
   var streak=0,c=act[t]?t:addDays(t,-1);while(act[c]){streak++;c=addDays(c,-1);}
   var lastAct=null;Object.keys(act).forEach(function(k){if(k<=t&&(!lastAct||k>lastAct))lastAct=k;});
   var hRead=Object.keys(st.had).length,hToday=null,hNext=null;
   H.forEach(function(h){if(st.had[h.n]===t&&!hToday)hToday=h;if(!st.had[h.n]&&!hNext)hNext=h;});
-  return {t:t,plan:plan,next:next,doneToday:doneToday,nDone:nDone,nTotal:nTotal,end:end,sabqi:sabqi,manzil:manzil,poolV:tot,budget:budget,memV:memV,memS:memS,appV:appV,appS:appS,knownS:knownS,lastAct:lastAct,streak:streak,hRead:hRead,hToday:hToday,hNext:hNext};
+  var nmRead=Object.keys(st.names||{}).length,nmToday=null,nmNext=null;
+  NM.forEach(function(x){var d=(st.names||{})[x[0]];if(d===t&&!nmToday)nmToday=x;if(!d&&!nmNext)nmNext=x;});
+  var duRead=Object.keys(st.duas||{}).length,duToday=null,duNext=null;
+  DU.forEach(function(x){var d=(st.duas||{})[x.n];if(d===t&&!duToday)duToday=x;if(!d&&!duNext)duNext=x;});
+  return {t:t,plan:plan,next:next,doneToday:doneToday,nDone:nDone,nTotal:nTotal,end:end,sabqi:sabqi,manzil:manzil,poolV:tot,budget:budget,memV:memV,memS:memS,appV:appV,appS:appS,knownS:knownS,lastAct:lastAct,streak:streak,hRead:hRead,hToday:hToday,hNext:hNext,nmRead:nmRead,nmToday:nmToday,nmNext:nmNext,duRead:duRead,duToday:duToday,duNext:duNext};
 }
 
 /* ---------- Classement ---------- */
-/* Points : leçon (sabaq) validée 10, révision cochée 2, hadith lu 3. Les sourates « déjà sues » ne comptent pas. */
+/* Points : leçon (sabaq) validée 10, révision cochée 2, hadith lu 3, nom d'Allah appris 2, duʿā apprise 3. Les sourates « déjà sues » ne comptent pas. */
 function statsFor(st,from){
-  var C=compute(st),t=C.t,les=0,rev=0,had=0;
+  var C=compute(st),t=C.t,les=0,rev=0,had=0,nam=0,dua=0;
   function inP(d){return d<=t&&(!from||d>=from);}
   Object.keys(st.prog).forEach(function(n){(st.prog[n]||[]).forEach(function(c){if(inP(c[1]))les++;});});
   Object.keys(st.rev).forEach(function(d){if(inP(d))rev+=(st.rev[d]||[]).length;});
   Object.keys(st.had).forEach(function(n){if(inP(st.had[n]))had++;});
-  return {pts:les*10+rev*2+had*3,les:les,rev:rev,had:had,streak:C.streak,appS:C.appS,appV:C.appV,knownS:C.knownS,lastAct:C.lastAct};
+  Object.keys(st.names||{}).forEach(function(n){if(inP(st.names[n]))nam++;});
+  Object.keys(st.duas||{}).forEach(function(n){if(inP(st.duas[n]))dua++;});
+  return {pts:les*10+rev*2+had*3+nam*2+dua*3,les:les,rev:rev,had:had,nam:nam,dua:dua,streak:C.streak,appS:C.appS,appV:C.appV,knownS:C.knownS,lastAct:C.lastAct};
 }
 function ranking(period){
   var from=period==="all"?null:weekStart(today()),out=[],seen={};
@@ -431,7 +591,7 @@ function lbRow(x){
   var s=x.s;
   return '<div class="lb'+(x.mine?" me":"")+'"><span class="rk'+(x.rank===1?" top":"")+'">'+(x.rank||"–")+'</span>'+
     '<div class="lb-mid"><div class="lb-name"><b>'+esc(x.name||"Sans nom")+'</b>'+(x.mine?' <span class="chip acc">toi</span>':'')+'</div>'+
-    '<div class="chips"><span class="chip">série '+plural(s.streak,"jour")+'</span><span class="chip">'+plural(s.les,"leçon")+'</span><span class="chip">'+plural(s.rev,"révision")+'</span><span class="chip">'+plural(s.had,"hadith")+'</span></div>'+
+    '<div class="chips"><span class="chip">série '+plural(s.streak,"jour")+'</span><span class="chip">'+plural(s.les,"leçon")+'</span><span class="chip">'+plural(s.rev,"révision")+'</span><span class="chip">'+plural(s.had,"hadith")+'</span>'+(s.nam?'<span class="chip">'+plural(s.nam,"nom")+' d\'Allah</span>':'')+(s.dua?'<span class="chip">'+plural(s.dua,"duʿā")+'</span>':'')+'</div>'+
     '<small class="muted">'+plural(s.appS,"sourate apprise","sourates apprises")+' ici'+(s.knownS?' · '+plural(s.knownS,"déjà sue","déjà sues"):'')+' · '+lastTxt(s.lastAct)+'</small></div>'+
     '<div class="pts"><b class="num">'+s.pts+'</b><span>pts</span></div></div>';
 }
@@ -451,7 +611,7 @@ function viewGroup(C){
   var tl=0,tr=0,th=0;list.forEach(function(x){tl+=x.s.les;tr+=x.s.rev;th+=x.s.had;});
   h+='<p class="small muted">Le groupe '+(wk?"cette semaine":"depuis le début")+' : '+plural(tl,"leçon validée","leçons validées")+', '+plural(tr,"révision")+', '+plural(th,"hadith lu","hadiths lus")+'.'+(wk?' Le classement de la semaine repart de zéro chaque lundi.':'')+'</p>';
   h+='<details><summary><b>Comment les points sont comptés</b></summary><div class="d-body"><ul class="plain">'+
-    '<li>Leçon (sabaq) validée : <b>10 pts</b>.</li><li>Révision cochée (sabqī ou manzil) : <b>2 pts</b>.</li><li>Hadith lu et compris : <b>3 pts</b>.</li></ul>'+
+    '<li>Leçon (sabaq) validée : <b>10 pts</b>.</li><li>Révision cochée (sabqī ou manzil) : <b>2 pts</b>.</li><li>Hadith lu et compris : <b>3 pts</b>.</li><li>Nom d\'Allah appris (avec son sens) : <b>2 pts</b>.</li><li>Duʿā apprise par cœur : <b>3 pts</b>.</li></ul>'+
     '<p>Les sourates cochées « déjà sue » ne rapportent aucun point : elles sont affichées à part, pour que ce que chacun savait avant de commencer ne fausse pas la course. À égalité de points, la plus longue série passe devant.</p>'+
     '<p class="small muted">Chacun coche lui-même : le classement ne vaut que par l\'honnêteté de chacun. Une révision cochée sans être faite ne rapporte rien devant Allah.</p></div></details>';
   h+='<section><h2>L\'intention avant le rang</h2><div class="card"><p>Le premier hadith des Quarante le rappelle : les actes ne valent que par les intentions (al-Bukhārī et Muslim). Le classement est là pour se motiver et s\'entraîner les uns les autres vers le bien, pas pour être vu.</p>'+
@@ -517,6 +677,23 @@ function profCard(C){
   else{var p=[];if(left)p.push(plural(left,"révision"));if(!hDone)p.push("la leçon du jour");msg="Sabaq validé, bien joué"+(name?" "+name:"")+". Il te reste "+p.join(" et ")+".";}
   return '<div class="prof"><div class="prof-av">'+AVATAR+'</div><div class="bubble"><span class="prof-name">Prof Souhail</span><p>'+esc(msg)+'</p></div></div>';
 }
+function arLines(t){return t.split("|").map(esc).join("<br>");}
+function nameCard(x){
+  var d=!!(state.names||{})[x[0]],pr=NPAIR[x[0]];
+  return '<div class="card name-card'+(d?" done":"")+'"><span class="small muted">Nom n° '+x[0]+' sur '+NM.length+'</span>'+
+    '<p class="big-ar" lang="ar" dir="rtl">'+esc(x[1])+'</p><p class="nm-tr">'+esc(x[2])+'</p><p>'+esc(x[3])+'</p>'+
+    (pr?'<p class="small muted">Ce nom se mentionne avec son complément, '+esc(NM[pr-1][2])+', pour exprimer la perfection d\'Allah.</p>':'')+
+    '<button class="btn'+(d?" is-done":"")+'" data-act="nm" data-n="'+x[0]+'" aria-pressed="'+d+'">'+(d?"✓ Appris (toucher pour annuler)":"J'ai appris ce nom et son sens")+'</button></div>';
+}
+function duaCard(x,full){
+  var d=!!(state.duas||{})[x.n],g=DG[x.g];
+  return '<div class="card dua-card'+(d?" done":"")+'"><h3>'+esc(x.o)+'</h3>'+
+    '<p class="dua-ar" lang="ar" dir="rtl">'+arLines(x.ar)+'</p>'+
+    '<p class="dua-tr">'+esc(x.tr)+'</p><p><b>Sens :</b> '+esc(x.fr)+'</p>'+
+    '<div class="chips"><span class="chip '+g[1]+'">'+g[0]+'</span><span class="chip">'+esc(x.src)+'</span></div>'+
+    (x.note?'<p class="small muted">'+esc(x.note)+'</p>':'')+
+    '<button class="btn'+(full?"":" sm")+(d?" is-done":full?"":" ghost")+'" data-act="du" data-n="'+x.n+'" aria-pressed="'+d+'">'+(d?"✓ Apprise par cœur (toucher pour annuler)":"Je la connais par cœur")+'</button></div>';
+}
 function viewToday(C){
   var pct=Math.round(100*C.memV/TOTAL_V),h='';
   h+='<header class="head"><span class="eyebrow">'+fmt(C.t,true)+'</span><h1>Aujourd\'hui</h1></header>';
@@ -547,6 +724,16 @@ function viewToday(C){
   h+='<section><div class="sec-h"><h2>4. La leçon du jour</h2><span class="small muted">le soir · 5 min</span></div>';
   if(hh){var rd=!!state.had[hh.n];h+='<div class="card'+(rd?" done":"")+'"><h3>Hadith n° '+hh.n+' des Quarante d\'an-Nawawī</h3>'+hadithBody(hh)+'<p class="small muted">Formulation résumée fidèlement, pas une traduction mot à mot. Texte arabe et explication : Jāmi\' al-\'Ulūm wal-Ḥikam d\'Ibn Rajab.</p><button class="btn'+(rd?" is-done":"")+'" data-act="had" data-n="'+hh.n+'" aria-pressed="'+rd+'">'+(rd?"✓ Lu et compris (toucher pour annuler)":"Marquer comme lu et compris")+'</button></div>';}
   else h+='<div class="card done"><h3>Les 42 hadiths sont lus</h3><p>Cycle suivant conseillé dans l\'onglet Leçons.</p></div>';
+  h+='</section>';
+  /* nom d'Allah */
+  var nx=C.nmToday||C.nmNext;
+  h+='<section><div class="sec-h"><h2>5. Un nom d\'Allah</h2><span class="small muted">'+C.nmRead+'/'+NM.length+' appris</span></div>';
+  if(nx)h+=nameCard(nx);else h+='<div class="card done"><h3>Les '+NM.length+' noms sont appris</h3><p>Continue à les réviser dans l\'onglet Leçons et à invoquer Allah par eux.</p></div>';
+  h+='</section>';
+  /* duʿā */
+  var dx=C.duToday||C.duNext;
+  h+='<section><div class="sec-h"><h2>6. Une duʿā</h2><span class="small muted">'+C.duRead+'/'+DU.length+' apprises</span></div>';
+  if(dx)h+=duaCard(dx,true);else h+='<div class="card done"><h3>Les '+DU.length+' duʿās sont apprises</h3><p>Garde-les vivantes en les disant à leur moment.</p></div>';
   h+='</section>';
   return h;
 }
@@ -604,8 +791,33 @@ function viewMethod(C){
   return h;
 }
 
+var LT="hadiths";
+function namesLesson(C){
+  var h='<div class="card"><p>« C\'est à Allah qu\'appartiennent les plus beaux noms : invoquez-Le par eux. » (Coran, Al-A\'rāf 7:180)</p>'+
+    '<p>Le Prophète ﷺ a dit : « Allah a quatre-vingt-dix-neuf noms, cent moins un ; celui qui les dénombre entrera au Paradis. » (al-Bukhārī et Muslim). Selon les savants, les « dénombrer » veut dire les apprendre, en comprendre le sens et adorer Allah selon ce qu\'ils impliquent.</p>'+
+    '<div class="note"><b>Sur la liste.</b> Le hadith ci-dessus est authentique, mais il ne donne pas les noms. La liste ci-dessous est celle de la version rapportée par at-Tirmidhī, la plus connue ; de nombreux savants (dont Ibn Taymiyya et Ibn Ḥajar) la considèrent comme un ajout d\'un rapporteur, et pas comme une parole du Prophète ﷺ. La plupart de ces noms figurent dans le Coran ou la Sunna authentique ; pour quelques-uns, c\'est discuté. Les sens indiqués sont des explications courtes, pas des traductions définitives.</div>'+
+    '<p class="small muted">'+C.nmRead+' sur '+NM.length+' appris. Le nom « Allah » réunit tous les autres et n\'est pas compté dans la liste.</p></div>';
+  h+='<div class="rows">';
+  NM.forEach(function(x){var d=!!(state.names||{})[x[0]];
+    h+='<div class="nm-row'+(d?" done":"")+'"><span class="n">'+x[0]+'</span><div class="nm-mid"><div class="plan-name"><b>'+esc(x[2])+'</b><span class="ar sm" lang="ar">'+esc(x[1])+'</span></div><span class="small muted">'+esc(x[3])+'</span></div>'+
+      '<button class="btn sm '+(d?"is-done":"ghost")+'" data-act="nm" data-n="'+x[0]+'" aria-pressed="'+d+'">'+(d?"✓ Appris":"Appris ?")+'</button></div>';
+  });
+  return h+'</div>';
+}
+function duasLesson(C){
+  var h='<div class="card"><p><b>'+DU.length+' invocations</b> tirées du Coran et de la Sunna authentique, avec leur sens et leur source. Apprends-en une, dis-la à son moment pendant quelques jours, puis passe à la suivante.</p>'+
+    '<p class="small muted">Le sens est une explication en français, pas une traduction littérale. Le texte arabe des invocations prophétiques suit la version la plus répandue ; pour une citation exacte, vérifie dans un recueil comme Ḥiṣn al-Muslim. '+C.duRead+' sur '+DU.length+' apprises.</p></div>';
+  h+='<div class="rows">';
+  DU.forEach(function(x){var d=!!(state.duas||{})[x.n];
+    h+='<details data-h="du'+x.n+'"'+(openH["du"+x.n]?" open":"")+'><summary><span class="hn">'+x.n+'</span><span>'+esc(x.o)+(d?' <span class="chip ok">apprise</span>':'')+'</span></summary><div class="d-body">'+duaCard(x,false)+'</div></details>';
+  });
+  return h+'</div>';
+}
 function viewLessons(C){
   var h='<header class="head"><span class="eyebrow">Une chose par jour</span><h1>Leçons</h1></header>';
+  h+='<div class="seg seg3" role="group" aria-label="Type de leçon">'+[["hadiths","Hadiths"],["noms","Noms d\'Allah"],["duas","Duʿās"]].map(function(t){return '<button data-act="ltab" data-t="'+t[0]+'" class="'+(LT===t[0]?"on":"")+'" aria-pressed="'+(LT===t[0])+'">'+t[1]+'</button>';}).join("")+'</div>';
+  if(LT==="noms")return h+namesLesson(C);
+  if(LT==="duas")return h+duasLesson(C);
   h+='<div class="card"><p>Chaque jour apporte deux apprentissages : le <b>sens de la sourate</b> du sabaq (sur la page Aujourd\'hui) et <b>un hadith</b> des Quarante d\'an-Nawawī (Al-Arba\'ūn an-Nawawiyya), 42 textes choisis parce qu\'ils portent les fondements de la religion.</p><p class="small muted">Référence d\'explication : Jāmi\' al-\'Ulūm wal-Ḥikam d\'Ibn Rajab al-Ḥanbalī. Les formulations ci-dessous sont des résumés fidèles, pas des traductions littérales : pour citer un hadith, reprends le texte dans une édition imprimée.</p><div class="chips"><span class="chip ok">Ṣaḥīḥ : dans al-Bukhārī et/ou Muslim</span><span class="chip acc">Ḥasan / ṣaḥīḥ selon le collecteur</span><span class="chip warn">Authenticité discutée ou jugée faible</span></div></div>';
   h+='<div class="rows">';
   H.forEach(function(x){var rd=!!state.had[x.n],g=GR[x.g];
@@ -789,7 +1001,7 @@ function onForm(name){
 }
 
 /* ---------- Actions ---------- */
-var PROGRESS_ACTS=["sabaq","adv","rev","had","known","reset"];
+var PROGRESS_ACTS=["sabaq","adv","rev","had","known","reset","nm","du"];
 function onAct(el){
   var a=el.getAttribute("data-act"),t=today(),n=+el.getAttribute("data-n");
   if(PROGRESS_ACTS.indexOf(a)>=0&&!inApp())return;
@@ -804,6 +1016,9 @@ function onAct(el){
     var ks=Object.keys(state.rev).sort();while(ks.length>400)delete state.rev[ks.shift()];commit();
   }else if(a==="had"){if(state.had[n])delete state.had[n];else state.had[n]=t;commit();
   }else if(a==="known"){if(state.known[n])delete state.known[n];else state.known[n]=1;commit();
+  }else if(a==="nm"){if(!state.names)state.names={};if(state.names[n])delete state.names[n];else state.names[n]=t;commit();
+  }else if(a==="du"){if(!state.duas)state.duas={};if(state.duas[n])delete state.duas[n];else state.duas[n]=t;commit();
+  }else if(a==="ltab"){var lt=el.getAttribute("data-t");LT=lt==="noms"||lt==="duas"?lt:"hadiths";render();window.scrollTo(0,0);
   }else if(a==="reset"){
     if(!resetArm){resetArm=true;render();return;}
     resetArm=false;var keep={start:state.start,cap:state.cap};state=norm({});state.start=keep.start;state.cap=keep.cap;commit();
